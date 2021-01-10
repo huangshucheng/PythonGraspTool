@@ -1,4 +1,5 @@
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
+import threading
 
 # class SimpleEcho(WebSocket):
 #
@@ -17,26 +18,45 @@ from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
 
 clients = []
-class SimpleChat(WebSocket):
-
+class WebSocketTool(WebSocket):
     def handleMessage(self):
-       for client in clients:
-          # if client != self:
-         # client.sendMessage(self.address[0] + u' - ' + self.data)
-         client.sendMessage("你发的是：" + self.data)
-         print("recv: "+ self.data)
+        # print("hcc>>recv222: ", "clients: ", clients)
+        for client in clients:
+         client.sendMessage("echo data： " + self.data)
+         # print("hcc>>recv111: ", self.data, "clients: " , clients)
+
 
     def handleConnected(self):
        print(self.address, 'connected')
-       # for client in clients:
-       #    client.sendMessage(self.address[0] + u' - connected')
        clients.append(self)
 
     def handleClose(self):
        clients.remove(self)
-       print(self.address, 'closed')
-       # for client in clients:
-       #    client.sendMessage(self.address[0] + u' - disconnected')
+       print("hcc>>" , self.address, 'closed')
 
-server = SimpleWebSocketServer('127.0.0.1', 8003, SimpleChat)
-server.serveforever()
+
+def _initCCWebSocket():
+    server = SimpleWebSocketServer('127.0.0.1', 8003, WebSocketTool)
+    server.serveforever()
+    print("hcc>>init websocket success!!")
+
+
+def init():
+    # print("hcc>>init websocket thread..start")
+    ccthread = threading.Thread(target=_initCCWebSocket)
+    ccthread.start()
+    # print("hcc>>init websocket thread..end")
+
+def sendHttpMessage(data):
+    # print("hcc>>sendHttpMessage>>>111", clients)
+    for client in clients:
+        client.sendMessage(data)
+    # print("hcc>>sendHttpMessage>>>222", clients)
+
+def testPrint():
+    print("hcc>>test",clients)
+
+# test
+# if __name__ == '__main__':
+#     ccthread = threading.Thread(target=_initCCWebSocket)
+#     ccthread.start()
