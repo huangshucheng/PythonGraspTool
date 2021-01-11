@@ -36,7 +36,10 @@ class WebSocketTool(WebSocket):
 
 
 def _initCCWebSocket():
-    server = SimpleWebSocketServer('127.0.0.1', 8003, WebSocketTool)
+    # server = SimpleWebSocketServer('127.0.0.1', 8003, WebSocketTool)
+    ws_address = ""
+    ws_port = 8005
+    server = SimpleWebSocketServer(ws_address, ws_port, WebSocketTool)
     server.serveforever()
     print("hcc>>init websocket success!!")
 
