@@ -1,8 +1,12 @@
-运行：
-sudo python setup.py install
+安装webSocket库：
+
+运行 3third下：
+sudo python3 setup.py install
 会安装好 SimpleWebSocketServer库，就能用了
 
 git地址：https://github.com/dpallot/simple-websocket-server/tree/master/SimpleWebSocketServer
+
+开启web代理：
 
 命令行执行mitmproxy:
 mitmweb -p 8001 --web-host 0.0.0.0 --web-port 8002 --set block_global=false --no-web-open-browser -s mitmproxy_rule.py
