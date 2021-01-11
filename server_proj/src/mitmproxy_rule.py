@@ -17,13 +17,13 @@ class MPController:
 
     #返回
     def response(self, flow: http.HTTPFlow) -> None:
-        self.log(f"hcc>>HOST>> \n{flow.request.pretty_host}")
-        self.log(f"hcc>>method>> \n{flow.request.method}")
-        self.log(f"hcc>>URL>> \n{flow.request.pretty_url}")
-        self.log(f"hcc>>headers>> \n{str(flow.request.headers)}")
-        self.log("hcc>>response headers:>> start\n")
-        self.log(flow.response.headers)
-        self.log("\nhcc>>response headers:>> end")
+        # self.log(f"hcc>>HOST>> \n{flow.request.pretty_host}")
+        # self.log(f"hcc>>method>> \n{flow.request.method}")
+        # self.log(f"hcc>>URL>> \n{flow.request.pretty_url}")
+        # self.log(f"hcc>>headers>> \n{str(flow.request.headers)}")
+        # self.log("hcc>>response headers:>> start\n")
+        # self.log(flow.response.headers)
+        # self.log("\nhcc>>response headers:>> end")
 
         #请求url
         if flow.request.pretty_url:
