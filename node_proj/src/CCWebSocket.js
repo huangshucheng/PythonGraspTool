@@ -7,7 +7,8 @@ function isLinux() {
     return os.platform() == "linux"
 }
 
-var web_socket_ip = isLinux() ? "121.41.0.245" : "127.0.0.1";
+//用内网port
+var web_socket_ip = isLinux() ? "172.16.166.106" : "127.0.0.1";
 var web_socket_port = 8005;
 var client_socket_list = {};
 
