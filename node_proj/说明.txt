@@ -17,3 +17,6 @@ anyproxy -i --ignore-unauthorized-ssl
 综合：
 anyproxy -i --ignore-unauthorized-ssl -p 8001 -s -rule ./anyproxy_rule.js
 anyproxy -i --ignore-unauthorized-ssl -p 8001 -r ./anyproxy_rule.js
+
+使用pm2开启：
+pm2 start anyproxy -x -- -i --ignore-unauthorized-ssl -p 8001 -r ./anyproxy_rule.js

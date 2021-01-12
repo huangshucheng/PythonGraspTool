@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 const os = require("os")
 
-console.log("hcc>> websocket Class: ", WebSocket)
+// console.log("hcc>> websocket Class: ", WebSocket)
 
 function isLinux() {
     return os.platform() == "linux"
@@ -10,6 +10,8 @@ function isLinux() {
 var web_socket_ip = isLinux() ? "121.41.0.245" : "127.0.0.1";
 var web_socket_port = 8005;
 var client_socket_list = {};
+
+console.log("hcc>>web_socket_ip: ", web_socket_ip , " , port: " , web_socket_port);
 
 function get_client_socket_key(client_socket) {
     if(!client_socket_list){
@@ -46,11 +48,11 @@ function start_websocket_server() {
     });
 
     server_web_socket.on("error", function (err) {
-        console.log("hcc>>WebSocket server listen error");
+        console.log("hcc>>WebSocket server listen error" , err);
     });
 
     server_web_socket.on("close", function (err) {
-        console.log("hcc>>WebSocket server listen close!!");
+        console.log("hcc>>WebSocket server listen close!!", err);
     });
 }
 
