@@ -32,6 +32,7 @@
 # VPN_PASSWORD='你的VPN密码' \
 # sh vpnsetup.sh
 
+# 需开启UDP端口: 500, 4500
 YOUR_IPSEC_PSK='hcc_vpn_psk'
 YOUR_USERNAME='hcc_vpn_name'
 YOUR_PASSWORD='hcc_vpn_123456'
