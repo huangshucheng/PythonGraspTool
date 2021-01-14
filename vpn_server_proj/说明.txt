@@ -1,0 +1,54 @@
+参考
+https://wap.idcbest.com/jjfanews/11004365.html
+github
+
+https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA
+
+》配置，手机选择L2TP VPN
+服务器：
+121.41.0.245   或者域名： hccfun.com
+账户：
+YOUR_USERNAME='hcc_vpn_name'
+密码：
+YOUR_PASSWORD='hcc_vpn_123456'
+密钥：
+YOUR_IPSEC_PSK='hcc_vpn_psk'
+
+
+》 一定要开启UDP端口：500和4500
+
+》 帮助
+ipsec  --help
+
+》 启停,重启服务命令
+service ipsec restart
+service xl2tpd restart
+
+》停止服务
+ipsec stop
+
+》 查看 IPsec VPN 服务器状态：
+ipsec status
+ipsec verify
+
+》 检查 Libreswan (IPsec) 和 xl2tpd 日志是否有错误：
+grep pluto /var/log/auth.log
+grep xl2tpd /var/log/syslog
+
+
+》 显示当前已建立的 VPN 连接：
+ipsec whack --trafficstatus
+
+
+
+》我的服务器信息
+IPsec VPN server is now ready for use!
+Connect to your new VPN with these details:
+Server IP: 121.41.0.245
+IPsec PSK: hcc_vpn_psk
+Username: hcc_vpn_name
+Password: hcc_vpn_123456
+Write these down. You'll need them to connect!
+Important notes:   https://git.io/vpnnotes
+Setup VPN clients: https://git.io/vpnclients
+IKEv2 guide:       https://git.io/ikev2

@@ -1,6 +1,5 @@
 
 var CCWebSocket = require("./CCWebSocket.js")
-// console.log("CCCCCCC",CCWebSocket)
 CCWebSocket.start_websocket_server();
 
 module.exports = {
@@ -73,7 +72,17 @@ module.exports = {
     var request_url = requestDetail.url || "empty";
     var request_method = requestDetail.requestOptions.method || "empty";
     var request_headers = requestDetail.requestOptions.headers || "empty";
-    var request_data = requestDetail.requestData || "empty";
+    // var request_data = requestDetail.requestData || "empty";
+
+    var request_message = {
+        ReqHost: request_host,
+        ReqUrl: request_url,
+        Method: request_method,
+        Headers: request_headers,
+    }
+    CCWebSocket.brocast_message_to_client(request_message);
+    console.log("ReqHost:", request_host, request_method)
+
     /*
     console.log("request---------------------start\n");
     console.log("hcc>>reqHost: " + request_host);
@@ -101,30 +110,18 @@ module.exports = {
     console.log(res_raw_body)
     console.log("\nresponse---------------------end\n");
     */
-
+    /*
     var req_headers_str = ""
     for(let key in request_headers){
         req_headers_str = req_headers_str + key + ": " + request_headers[key] + "\n"
     }
-
     // data send to client 
     var request_message = "[reqHeader<" + request_host + ">]\n"
     request_message = request_message + "ReqUrl: " + request_url + "\n"
     request_message = request_message + "Method: " + request_method + "\n"
     request_message = request_message + req_headers_str
-    
-    console.log(request_message)
-    CCWebSocket.send_message_to_client(request_message)
+    */
 
-   /*
-   console.log("hcc>>请求:>>>>>start>>\n");
-   console.log(requestDetail);
-   console.log("hcc>>请求:>>>>>end>>\n");
-
-   console.log("hcc>>返回:>>>>>start>>\n");
-   console.log(responseDetail);
-   console.log("hcc>>返回:>>>>>end>>\n");
-   */
     // 不做任何处理，返回null
     return null;
   },
