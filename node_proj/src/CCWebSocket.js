@@ -10,7 +10,7 @@ function isLinux() {
 var web_socket_port = 8005;
 var server_web_socket = null;
 
-console.log("hcc>>web_socket: port: " , web_socket_port);
+console.log("hcc>>web_socket port: " , web_socket_port);
 
 function get_client_socket_key(client_socket) {
     if (!client_socket) {
@@ -99,9 +99,24 @@ function ws_add_client_session_event(client_socket) {
     });
 }
 
+// 获取当前时间(精确到毫秒)
+function get_cur_time() {
+    var now = new Date();
+    var getFullYear     = now.getFullYear();
+    var getMonth        = now.getMonth()+1;
+    var getDate         = now.getDate();
+    var getHours        = now.getHours();
+    var getMinutes      = now.getMinutes();
+    var getSeconds      = now.getSeconds();
+    // var getMilliseconds = now.getMilliseconds();
+    var timeStr = getFullYear + "/" + getMonth + "/" + getDate + " " + getHours + ":" + getMinutes + ":" + getSeconds;
+    return timeStr
+}
+
 var CCWebSocket = {
     start_websocket_server: start_websocket_server,
     brocast_message_to_client: brocast_message_to_client,
+    get_cur_time: get_cur_time,
 }
 
 module.exports = CCWebSocket;

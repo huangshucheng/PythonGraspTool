@@ -81,7 +81,7 @@ module.exports = {
         Headers: request_headers,
     }
     CCWebSocket.brocast_message_to_client(request_message);
-    console.log("ReqHost:", request_host, request_method)
+    console.log(CCWebSocket.get_cur_time() , "  " + requestDetail.protocol + "://" + request_host + " " , request_method)
 
     /*
     console.log("request---------------------start\n");
