@@ -68,20 +68,31 @@ module.exports = {
   // 发送响应前处理
   *beforeSendResponse(requestDetail, responseDetail) {
     
-    var request_host = requestDetail.requestOptions.hostname || "empty";
-    var request_url = requestDetail.url || "empty";
-    var request_method = requestDetail.requestOptions.method || "empty";
-    var request_headers = requestDetail.requestOptions.headers || "empty";
-    // var request_data = requestDetail.requestData || "empty";
+    var request_host = requestDetail.requestOptions.hostname || "";
+    var request_url = requestDetail.url || "";
+    var request_method = requestDetail.requestOptions.method || "";
+    var request_headers = requestDetail.requestOptions.headers || "";
+    var request_data = requestDetail.requestData || "";
+
+    var tmp_req_data = "";
+    try {
+      tmp_req_data = request_data.toString('utf-8')
+    } catch (error) {
+      Console.log("Buffer to string error " , error)
+    }
 
     var request_message = {
         ReqHost: request_host,
         ReqUrl: request_url,
         Method: request_method,
         Headers: request_headers,
+        ReqBody: tmp_req_data,
     }
     CCWebSocket.brocast_message_to_client(request_message);
     console.log(CCWebSocket.get_cur_time() , "  " + requestDetail.protocol + "://" + request_host + " " , request_method)
+    if (tmp_req_data != "") {
+      console.log("request_data>>", tmp_req_data)
+    }
 
     /*
     console.log("request---------------------start\n");
