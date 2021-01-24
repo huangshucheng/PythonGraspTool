@@ -41,7 +41,7 @@ module.exports = {
       //   requestOptions: newRequestOptions
       // };
     // 不做任何处理，返回null
-    return null;
+      return null;
    },
 
   
@@ -78,7 +78,7 @@ module.exports = {
     try {
       tmp_req_data = request_data.toString('utf-8')
     } catch (error) {
-      Console.log("Buffer to string error " , error)
+      console.log("Buffer to string error " , error)
     }
 
     var request_message = {

@@ -20,3 +20,15 @@ anyproxy -i --ignore-unauthorized-ssl -p 8001 -r ./anyproxy_rule.js
 
 使用pm2开启：
 pm2 start anyproxy -x -- -i --ignore-unauthorized-ssl -p 8001 -s -r ./anyproxy_rule.js
+
+
+输入IP:8001端口无限自己代理bug修复：
+在node_module/anyproxy/lib/requestHandler.js 的getUserReqHandler函数296行增加：
+ //console.log("hcc>>req: ")
+ //console.log(req.headers)
+if(req.headers.Host){
+   if(req.headers.Host == "127.0.0.1:8001" || req.headers.Host == "hccfun.com:8001" || req.headers.Host == "121.41.0.245:8001"){
+      console.log("hcc>>error>>8001, host: " , req.headers.Host)
+      return
+   }
+}
