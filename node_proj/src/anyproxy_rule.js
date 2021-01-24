@@ -90,9 +90,9 @@ module.exports = {
     }
     CCWebSocket.brocast_message_to_client(request_message);
     console.log(CCWebSocket.get_cur_time() , "  " + requestDetail.protocol + "://" + request_host + " " , request_method)
-    if (tmp_req_data != "") {
-      console.log("request_data>>", tmp_req_data)
-    }
+    // if (tmp_req_data != "") {
+    //   console.log("request_data>>", tmp_req_data)
+    // }
 
     /*
     console.log("request---------------------start\n");
