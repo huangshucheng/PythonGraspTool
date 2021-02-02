@@ -7,7 +7,8 @@
 
 开启websocket抓包 ：anyproxy --ws-intercept
 
-
+生成证书：
+anyproxy-ca
 
 
 当访问特定的HTTPS站点，AnyProxy会提示该站点不是一个安全的网站，这通常是因为站点的证书设置不能被正确识别导致的（比如，站点的证书是自签发的）。如果您信任该网站,可以通过启动参数 --ignore-unauthorized-ssl 来忽略证书认证的错误
