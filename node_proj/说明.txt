@@ -2,6 +2,7 @@
 
 -i 开启https
 -s 静默模式，不打印信息
+-x 是否启用fork模式，windows 默认不支持fork模式，会报错，windows下把-x去掉就行了
 
 用脚本开启： anyproxy -i -rule myrule.js
 
@@ -23,8 +24,7 @@ anyproxy -i --ignore-unauthorized-ssl -p 8001 -s -r ./anyproxy_rule.js
 anyproxy -i --ignore-unauthorized-ssl -p 8001 -r ./anyproxy_rule.js
 
 代理websocket：
-anyproxy -i --ignore-unauthorized-ssl -p 8001 --ws-intercept -r ./anyproxy_rule.js
-
+anyproxy -i --ignore-unauthorized-ssl -p 8001 -s --ws-intercept -r ./anyproxy_rule.js
 
 使用pm2开启：
 pm2 start anyproxy -x -- -i --ignore-unauthorized-ssl -p 8001 -s -r ./anyproxy_rule.js
