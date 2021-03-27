@@ -74,11 +74,13 @@ module.exports = {
     var request_headers = requestDetail.requestOptions.headers || "";
     var request_data = requestDetail.requestData || "";
     var res_data_body = responseDetail.response.body || "";
-    var res_raw_body = responseDetail.response.rawBody || "";
+    // var res_raw_body = responseDetail.response.rawBody || "";
 
     var tmp_req_data = "";
+    var tmp_res_data = "";
     try {
       tmp_req_data = request_data.toString('utf-8')
+      tmp_res_data = res_data_body.toString('utf-8');
     } catch (error) {
       console.log("Buffer to string error " , error)
     }
@@ -89,8 +91,7 @@ module.exports = {
         Method: request_method,
         Headers: request_headers,
         ReqBody: tmp_req_data,
-        ResBody: res_data_body,
-        // ResRawBody: res_raw_body,
+        ResBody: tmp_res_data,
     }
     CCWebSocket.brocast_message_to_client(request_message);
     console.log(CCWebSocket.get_cur_time() , "  " + requestDetail.protocol + "://" + request_host + " " , request_method)
