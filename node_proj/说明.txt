@@ -38,7 +38,7 @@ pm2 start anyproxy -x -- -i --ignore-unauthorized-ssl -p 8001 -s --ws-intercept 
  //console.log("hcc>>req: ")
  //console.log(req.headers)
 if(req.headers.Host){
-   if(req.headers.Host == "127.0.0.1:8001" || req.headers.Host == "hccfun.com:8001" || req.headers.Host == "121.41.0.245:8001"){
+  if(req.headers.Host == "127.0.0.1:8001" || req.headers.Host == "hccluck.com:8001" || req.headers.Host == "1.15.80.165:8001" || req.headers.Host == "172.17.16.11:8001"){
       console.log("hcc>>error>>8001, host: " , req.headers.Host)
       return
    }
