@@ -90,7 +90,7 @@ module.exports = {
         Headers: request_headers,
         ReqBody: tmp_req_data,
         ResBody: res_data_body,
-        ResRawBody: res_raw_body,
+        // ResRawBody: res_raw_body,
     }
     CCWebSocket.brocast_message_to_client(request_message);
     console.log(CCWebSocket.get_cur_time() , "  " + requestDetail.protocol + "://" + request_host + " " , request_method)
