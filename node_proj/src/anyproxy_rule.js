@@ -73,6 +73,8 @@ module.exports = {
     var request_method = requestDetail.requestOptions.method || "";
     var request_headers = requestDetail.requestOptions.headers || "";
     var request_data = requestDetail.requestData || "";
+    var res_data_body = responseDetail.response.body || "";
+    var res_raw_body = responseDetail.response.rawBody || "";
 
     var tmp_req_data = "";
     try {
@@ -87,6 +89,8 @@ module.exports = {
         Method: request_method,
         Headers: request_headers,
         ReqBody: tmp_req_data,
+        ResBody: res_data_body,
+        ResRawBody: res_raw_body,
     }
     CCWebSocket.brocast_message_to_client(request_message);
     console.log(CCWebSocket.get_cur_time() , "  " + requestDetail.protocol + "://" + request_host + " " , request_method)
