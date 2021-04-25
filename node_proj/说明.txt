@@ -3,6 +3,7 @@
 -i 开启https
 -s 静默模式，不打印信息
 -x 是否启用fork模式，windows 默认不支持fork模式，会报错，windows下把-x去掉就行了
+提示：windows下之只能用node ./anyproxy_start.js 开启anyproxy
 
 用脚本开启： anyproxy -i -rule myrule.js
 
@@ -34,7 +35,7 @@ pm2 start anyproxy -x -- -i --ignore-unauthorized-ssl -p 8001 -s --ws-intercept 
 
 
 输入IP:8001端口无限自己代理bug修复：
-在node_module/anyproxy/lib/requestHandler.js 的getUserReqHandler函数296行增加：
+在c/user/Administrator/AppData/Roaming/npm/node_module/anyproxy/lib/requestHandler.js 的getUserReqHandler函数296行增加：
  //console.log("hcc>>req: ")
  //console.log(req.headers)
 if(req.headers.Host){
